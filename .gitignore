@@ -1,0 +1,12 @@
+#全ファイル無視
+/*
+
+#dotfile無視
+/.*
+
+#許可リスト
+!/.zshrc
+!/.vimrc
+!/.gitignore
+!/.gitconfig
+!/.gitmodules
