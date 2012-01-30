@@ -1,0 +1,10 @@
+//vimから作ったテンプレート
+
+#include<iostream>
+#include<vector>
+#include<cmath>
+
+int main(){
+	using namespace std;
+	cout << "hello world" << endl;
+}

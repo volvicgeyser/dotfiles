@@ -10,5 +10,4 @@
 !/.gitignore
 !/.gitconfig
 !/.gitmodules
-!/.vim/template/c.txt
-!/.vim/template/Makefile.txt
+!/.vim

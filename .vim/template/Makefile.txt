@@ -1,0 +1,2 @@
+shared_ptr: shared_ptr.hpp main.cpp
+	g++ -o shared_ptr shared_ptr.hpp main.cpp -g
