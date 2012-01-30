@@ -2,8 +2,12 @@
 set autoindent
 set tabstop=4
 
+
+"テンプレートファイルの設定　read template files.
 autocmd BufNewFile *.c 0r $HOME/.vim/template/c.txt
 autocmd BufNewFile Makefile 0r $HOME/.vim/template/Makefile.txt
+autocmd BufNewFile *.cpp 0r $HOME/.vim/template/cpp.txt
+
 
 "クリップボードをGUIと連携
 set clipboard=unnamed

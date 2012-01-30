@@ -79,6 +79,13 @@ alias w3mg='w3m http://google.co.jp'
 alias emacs='emacs -nw'
 alias twitvim='vim -c FriendsTwitter'
 
+#alias aptitude
+alias ai='sudo aptitude install'
+alias ar='sudo aptitude remove'
+alias aiy='sudo aptitude install -y'
+alias aiu='sudo aptitude update'
+alias aiug='sudo aptitude upgrade'
+
 #例　$ls L
 alias -g L='| less' 
 alias -g H='| head'
