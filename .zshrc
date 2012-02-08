@@ -86,6 +86,12 @@ alias aiy='sudo aptitude install -y'
 alias aiu='sudo aptitude update'
 alias aiug='sudo aptitude upgrade'
 
+#alias git
+alias gita='git add .'
+alias gits='git status'
+alias gitc='git commit'
+
+
 #例　$ls L
 alias -g L='| less' 
 alias -g H='| head'
