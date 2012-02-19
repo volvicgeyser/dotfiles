@@ -1,4 +1,9 @@
-"辞書ファイルの設定 .vim/dict/
+
+"メニューとツールバー削除
+set guioptions+=b
+set guioptions-=m
+set guioptions-=T
+set nocompatible
 
 
 " required!
@@ -31,7 +36,7 @@ endif
  Bundle 'Shougo/vimproc'
  Bundle 'Shougo/vimshell'
  Bundle 'Shougo/vimfiler'
- Bundle 'Shougo/neocomplcache-snippets-complete' 
+ "Bundle 'Shougo/neocomplcache-snippets-complete' 
  " vim-scripts repos
  Bundle 'L9'
  Bundle 'FuzzyFinder'
@@ -41,14 +46,14 @@ endif
  
  Bundle 'unite.vim' 
  Bundle 'quickrun.vim'
- Bundle 'AutoComplPop'
+ "Bundle 'AutoComplPop'
  Bundle 'h1mesuke/unite-outline'
  Bundle 'GoogleSuggest-Complete'
  Bundle 'SingleCompile'
  Bundle 'TwitVim'
- Bundle 'neocomplcache'
  Bundle 'thinca/vim-ref'
- Bundle 'Shougo/neocomplcache-clang'
+ "Bundle 'Shougo/neocomplcache-clang'
+ Bundle 'neocomplcache'
 
  "
  Bundle 'EnhCommentify.vim'
@@ -86,24 +91,23 @@ endif
 set autoindent
 set tabstop=4
 
-
 "テンプレートファイルの設定　read template files.
-autocmd BufNewFile *.c 0r $HOME/.vim/template/c.txt
-autocmd BufNewFile Makefile 0r $HOME/.vim/template/Makefile.txt
-autocmd BufNewFile *.cpp 0r $HOME/.vim/template/cpp.txt
+autocmd BufNewFile *.c 0r $DOTVIMPATH/template/c.txt
+autocmd BufNewFile Makefile 0r $DOTVIMPATH/template/Makefile.txt
+autocmd BufNewFile *.cpp 0r $DOTVIMPATH/template/cpp.txt
 
-"クリップボードをGUIと連携
-set clipboard=unnamed
+let s:boostver="1_47"
+if has('win32') || has('win64')
+	let $BOOST_ROOT = "C:/Program Files/boost/boost".s:boostver."/boost"
+else
+	"for ubuntu
+ 	let $BOOST_ROOT = "/usr/include/boost"
+endif
 
-"タブの設定
-set autoindent
-set tabstop=4
 
-autocmd BufNewFile *.c 0r $HOME/.vim/template/c.txt
-autocmd BufNewFile Makefile 0r $HOME/.vim/template/Makefile.txt
+"スニペットファイルの読み込み
+let g:NeoComplCache_SnippetsDir = $DOTVIMPATH .'/snippets'
 
-"高度なインデント
-set smartindent
 
 "カーソルを行頭、行末で止まらないようにする
 set whichwrap=b,s,h,l,<,>,[,]
@@ -144,3 +148,43 @@ function! s:HandleURI()
 endfunction
 
 nnoremap <Leader>w :<C-u>call <SID>HandleURI()<CR>
+
+
+"neocomplcache
+let g:neocomplcache_enable_at_startup = 1
+
+
+"dictionary neocomplcacheの辞書の設定
+let g:neocomplcache_dictionary_filetype_lists = {
+        \ 'default' : '',
+        \ 'php'	: $DOTVIMPATH . expand('/dict/php.dict'), 
+		\ 'cpp'	: $DOTVIMPATH . expand('/dict/cpp.dict'),
+		\ 'pl'	: $DOTVIMPATH . expand('/dict/pl.dict'),
+\ }
+
+" Define keyword.
+if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
+endif
+
+
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+
+"これを有効にするとdd（一行削除）の挙動がおかしくなる！
+"noremap d. :NeoComplCacheCachingDictionary
+
+
+"コードスニペット
+imap <C-k>     <Plug>(neocomplcache_snippets_expand)
+smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+"neocomplcache
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : "\<C-x>\<C-u>"
+function! s:check_back_space()"{{{
+let col = col('.') - 1
+return !col || getline('.')[col - 1] =~ '\s'
+endfunction"}}
+
