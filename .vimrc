@@ -1,3 +1,6 @@
+"エンコードの自動判別
+set fileencodings=ucs-bom,cp932,euc-jp,utf-8,default,latin1
+
 
 "メニューとツールバー削除
 set guioptions+=b
