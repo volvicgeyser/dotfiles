@@ -188,3 +188,21 @@ let col = col('.') - 1
 return !col || getline('.')[col - 1] =~ '\s'
 endfunction"}}
 
+"ref
+let g:ref_alc_cmd = 'w3m -dump %s'
+let g:ref_alc_start_linenumber = 39 
+if exists('*ref#register_detection')
+	call ref#register_detection('_', 'alc')
+endif
+
+
+nnoremap ,ufo : <C-u>Unite font<CR> 
+nnoremap ,ra : <C-u>Ref alc<Space>
+nnoremap ,uo : <C-u>Unite outline<CR>
+nnoremap ,um : <C-u>Unite mapping<CR> 
+nnoremap ,ur : <C-u>Unite file_mru<CR> 
+nnoremap ,ub : <C-u>Unite buffer<CR> 
+nnoremap ,ufi : <C-u>UniteWithBufferDir -buffer-name=files file<CR> 
+nnoremap ,ufav : <C-u>Unite bookmark<CR>
+nnoremap ,ure : <C-u>Unite -buffer-name=register register<CR>
+nnoremap ,sc : <C-u>SingleCompile<CR>
