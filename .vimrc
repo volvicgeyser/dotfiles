@@ -1,3 +1,9 @@
+"インクリメンタルサーチ
+set incsearch
+
+"前回の検索パターンをハイライト :nohでハイライト消せる
+set hlsearch
+
 "エンコードの自動判別
 set fileencodings=ucs-bom,cp932,euc-jp,utf-8,default,latin1
 
@@ -209,3 +215,4 @@ nnoremap ,ufi : <C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap ,ufav : <C-u>Unite bookmark<CR>
 nnoremap ,ure : <C-u>Unite -buffer-name=register register<CR>
 nnoremap ,sc : <C-u>SingleCompile<CR>
+nnoremap ,, : <C-u>tabnew<CR>
