@@ -1,3 +1,13 @@
+"古いVimバージョン(7.2)で日本語のヘルプファイルを
+"開いたときに固まるのを回避
+set notagbsearch
+
+"日本語ヘルプドキュメントの設定
+set helplang=ja,en
+
+"comandline height
+set cmdheight=1
+
 "インクリメンタルサーチ
 set incsearch
 
@@ -80,7 +90,9 @@ endif
 
  "wordpress
  Bundle 'VimRepress'
-
+ 
+ "vim japanese help
+ Bundle 'vim-jp/vimdoc-ja'
  " ...
 
  filetype plugin indent on     " required! 
@@ -215,4 +227,16 @@ nnoremap ,ufi : <C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap ,ufav : <C-u>Unite bookmark<CR>
 nnoremap ,ure : <C-u>Unite -buffer-name=register register<CR>
 nnoremap ,sc : <C-u>SingleCompile<CR>
-nnoremap ,, : <C-u>tabnew<CR>
+nnoremap ,vf : <C-u>VimFiler<Space><CR>
+nnoremap ,, : <C-u>tabnew<Space>
+nnoremap ,vex :<C-u>call <SID>DoVex()<CR>
+function! s:DoVex()
+	Vex
+	vertical resize 25	
+endfunction
+
+"nnoremap ,ops :<C-u>call <SID>DoOps()<CR>
+"function! s:DoOps()
+"    Ops	
+"endf
+
