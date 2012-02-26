@@ -9,7 +9,7 @@ if(has('win32') || has('win64'))
 	set clipboard=unnamed
 else
 "    set clipboard=unnamed,autoselect
-	set clipboard=unameed    
+	set clipboard=unnamed    
 endif
 
 "フォントの設定
