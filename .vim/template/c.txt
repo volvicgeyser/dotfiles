@@ -1,5 +1,5 @@
 //vimのテンプレートから作ったファイル
-
+//Copyright(C) Volvic Geyser All Rights Reserved.
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>

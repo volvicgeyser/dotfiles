@@ -134,7 +134,7 @@ let g:NeoComplCache_SnippetsDir = $DOTVIMPATH .'/snippets'
 set whichwrap=b,s,h,l,<,>,[,]
 
 "文字のカラーをセット
-colorscheme delek
+"colorscheme delek
 
 "ステータス行を表示
 set laststatus=2
@@ -239,4 +239,16 @@ endfunction
 "function! s:DoOps()
 "    Ops	
 "endf
+
+
+"nでファイル新規作成とかできる
+let g:vimfiler_safe_mode_by_default= 0
+
+
+
+"pythonの設定
+autocmd FileType python setl autoindent
+autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finallly,def,class
+autocmd FileType python setl tabstop=8 expandtab shiftwidth=4 softtabstop=4
+
 

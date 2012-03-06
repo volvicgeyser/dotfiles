@@ -1,5 +1,5 @@
 //vimから作ったテンプレート
-
+//Copyright(C) Volvic Geyser All Rights Reserved.
 #include<iostream>
 #include<vector>
 #include<cmath>
