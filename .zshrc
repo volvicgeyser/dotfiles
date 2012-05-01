@@ -126,5 +126,94 @@ if [ -d $EPREFIX ]; then
 fi
 
 
+#url http://gist.github.com/414589
+#auto_fu.zshによる自動補完
+if [ -f "$HOME/.zsh/auto-fu.zsh/auto-fu.zsh" ]; then
+	unsetopt sh_wordsplit
+	zstyle ':completion:*' completer _oldlist _complete _expand _match _prefix _approximate _list _history
+
+	AUTO_FU_NOCP=1 source $HOME/.zsh/auto-fu.zsh/auto-fu.zsh
+	zle-line-init() {
+		auto-fu-init
+	}
+	zle -N zle-line-init
+
+    # http://d.hatena.ne.jp/tarao/20100823/1282543408
+    #auto-fu.zshでコマンドを確定するときに不完全な補完サフィックスを無視する
+	#例:
+	#$ ls -l dir
+	#と入力した時に
+	#Enterを押さずにTabキーを押してしまうと
+	#$ ls -l directory-with-very-long-name/0
+	#まで補完される
+	#
+	#Tabを押しても/0まで補完しないようにする
+	function afu+delete-unambiguous-prefix () {
+        afu-clearing-maybe
+        local buf; buf="$BUFFER"
+        local bufc; bufc="$buffer_cur"
+        [[ -z "$cursor_new" ]] && cursor_new=-1
+        [[ "$buf[$cursor_new]" == ' ' ]] && return
+        [[ "$buf[$cursor_new]" == '/' ]] && return
+        ((afu_in_p == 1)) && [[ "$buf" != "$bufc" ]] && {
+            # there are more than one completion candidates
+            zle afu+complete-word
+            [[ "$buf" == "$BUFFER" ]] && {
+                # the completion suffix was an unambiguous prefix
+                afu_in_p=0; buf="$bufc"
+            }
+            BUFFER="$buf"
+            buffer_cur="$bufc"
+        }
+    }
+    zle -N afu+delete-unambiguous-prefix
+    function afu-ad-delete-unambiguous-prefix () {
+        local afufun="$1"
+        local code; code=$functions[$afufun]
+        eval "function $afufun () { zle afu+delete-unambiguous-prefix; $code }"
+    }
+    afu-ad-delete-unambiguous-prefix afu+accept-line
+    afu-ad-delete-unambiguous-prefix afu+accept-line-and-down-history
+    afu-ad-delete-unambiguous-prefix afu+accept-and-hold
+
+fi
+
+
+# http://d.hatena.ne.jp/tyru/20100828/run_tmux_or_screen_at_shell_startup
+# tmux -> tscreen -> screen　の優先順位で起動する
+is_screen_running() {
+    # tscreen also uses this varariable.
+    [ ! -z "$WINDOW" ]
+}
+is_tmux_runnning() {
+    [ ! -z "$TMUX" ]
+}
+is_screen_or_tmux_running() {
+    is_screen_running || is_tmux_runnning
+}
+shell_has_started_interactively() {
+    [ ! -z "$PS1" ]
+}
+resolve_alias() {
+    cmd="$1"
+    while \
+        whence "$cmd" >/dev/null 2>/dev/null \
+        && [ "$(whence "$cmd")" != "$cmd" ]
+    do
+cmd=$(whence "$cmd")
+    done
+echo "$cmd"
+}
+
+
+if ! is_screen_or_tmux_running && shell_has_started_interactively; then
+for cmd in tmux tscreen screen; do
+if whence $cmd >/dev/null 2>/dev/null; then
+            $(resolve_alias "$cmd")
+            break
+fi
+done
+fi
+
 
 #export PATH="$PATH:$EPREFIX/usr/bin:$EPREFIX/bin:$EPREFIX/tmp/usr/bin:$EPREFIX/tmp/bin:/usr/sfw/bin:/usr/sfw/i386-sun-solaris2.10/bin:/usr/sfw/sparc-sun-solaris2.10/bin:/usr/bin:/bin"
