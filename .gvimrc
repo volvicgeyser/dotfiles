@@ -2,21 +2,22 @@
 colorscheme koehler
 
 "フォントの設定
-set guifont="Takao Pゴシック:h12"
+"set guifont=Takoゴシック 10 
+"set guifontwide=Takoゴシック:h9
 
 "コピペにクリップボードを使う
 if(has('win32') || has('win64'))
 	set clipboard=unnamed
 else
 "    set clipboard=unnamed,autoselect
-	set clipboard=unnamed    
+	set clipboard=unnamed
 endif
 
 "フォントの設定
 if(has('win32') || has('win64'))
-		set guifont=Tako ゴシック:h12
+		set guifont=Takao ゴシック:h12
 else
-"        set guifont=TakoP ゴシック:h12
+        set guifont=Takaoゴシック\ 12
 endif
 
 

@@ -117,3 +117,14 @@ if [ -d $HOME/android-sdk-linux_x86 ]; then
 	export PATH="$ANDROID_HOME/platform-tools:$PATH"
 fi
 
+#gentooフォルダのパス
+declare EPREFIX="$HOME/gentoo"
+
+#gentoo prefixの設定
+if [ -d $EPREFIX ]; then
+	export EPREFIX=$EPREFIX
+fi
+
+
+
+#export PATH="$PATH:$EPREFIX/usr/bin:$EPREFIX/bin:$EPREFIX/tmp/usr/bin:$EPREFIX/tmp/bin:/usr/sfw/bin:/usr/sfw/i386-sun-solaris2.10/bin:/usr/sfw/sparc-sun-solaris2.10/bin:/usr/bin:/bin"

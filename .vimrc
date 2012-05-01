@@ -63,7 +63,7 @@ endif
  Bundle 'git://git.wincent.com/command-t.git'
  
  
- Bundle 'unite.vim' 
+ Bundle 'Shougo/unite.vim' 
  Bundle 'quickrun.vim'
  "Bundle 'AutoComplPop'
  Bundle 'h1mesuke/unite-outline'
@@ -230,6 +230,7 @@ nnoremap ,sc : <C-u>SingleCompile<CR>
 nnoremap ,vf : <C-u>VimFiler<Space><CR>
 nnoremap ,, : <C-u>tabnew<Space>
 nnoremap ,vex :<C-u>call <SID>DoVex()<CR>
+nnoremap ,vs :<C-u>VimShell -popup<CR>
 function! s:DoVex()
 	Vex
 	vertical resize 25	
