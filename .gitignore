@@ -5,6 +5,12 @@
 /.*
 
 #許可リスト
+!/zsh
+!/vim
+!/emacs
+!/screen
+!/vimperator
+
 !/.zshrc
 !/.vimrc
 !/.gitignore
@@ -14,3 +20,4 @@
 !/.readme_dotfiles.txt
 !/.gvimrc
 !/.screenrc
+!/.zsh
