@@ -10,14 +10,10 @@
 !/emacs
 !/screen
 !/vimperator
+!/install.sh
 
-!/.zshrc
-!/.vimrc
+
 !/.gitignore
 !/.gitconfig
 !/.gitmodules
-!/.vim
-!/.readme_dotfiles.txt
-!/.gvimrc
-!/.screenrc
-!/.zsh
+!/Readme.txt
