@@ -78,13 +78,18 @@ alias bc='bc -l -q'
 alias w3mg='w3m http://google.co.jp'
 alias emacs='emacs -nw'
 alias twitvim='vim -c FriendsTwitter'
+alias vimfiler='vim -c VimFiler'
+alias vimshell='vim -c VimShell'
 
-#alias aptitude
+#alias aptitude(ubuntu, debian)
 alias ai='sudo aptitude install'
 alias ar='sudo aptitude remove'
 alias aiy='sudo aptitude install -y'
 alias aiu='sudo aptitude update'
 alias aiug='sudo aptitude upgrade'
+
+#emerge(gentoo)
+alias em='emerge'
 
 #alias git
 alias gita='git add .'
