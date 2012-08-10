@@ -35,8 +35,7 @@ setopt extended_history
 #cd無しでディレクトリの移動
 setopt auto_cd
 #コマンドの引数を補完する
-autoload -U compinit
-compinit
+autoload -U compinit; compinit
 #プロンプトの設定
 PROMPT="%n@%m: %~$ "
 PROMPT2="%_%% "
@@ -50,6 +49,12 @@ setopt correct
 setopt brace_ccl
 #ls color
 alias ls='ls --color=auto'
+
+
+#corret機能を無効
+alias php='nocorrect php'
+
+
 #compctl
 compctl -f vim
 compctl -/ cd
@@ -80,32 +85,44 @@ alias emacs='emacs -nw'
 alias twitvim='vim -c FriendsTwitter'
 alias vimfiler='vim -c VimFiler'
 alias vimshell='vim -c VimShell'
+alias pd='popd'
+alias :q='exit'
+alias cl='clear'
+alias gd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
+alias mv='mv -v'
+alias cp='ls -v'
+alias rm='ls -v'
 
 #alias aptitude(ubuntu, debian)
 alias ai='sudo aptitude install'
 alias ar='sudo aptitude remove'
 alias aiy='sudo aptitude install -y'
-alias aiu='sudo aptitude update'
+alias aiud='sudo aptitude update'
 alias aiug='sudo aptitude upgrade'
+alias as='sudo apt-cache search'
+alias alert="notify-send -t 5 Termianl"
+alias so="source"
 
 #emerge(gentoo)
 alias em='emerge'
 
 #alias git
-alias gita='git add .'
+alias gita='git add -A'
 alias gits='git status'
 alias gitc='git commit'
-
+alias gitcm='git commit -m'
+alias gitl='git log'
+alias gitt='git tag'
+alias gitb='git branch'
 
 #例　$ls L
-alias -g L='| less' 
+alias -g L='| lv' 
 alias -g H='| head'
 alias -g T='| tail'
 alias -g G='| grep'
 alias -g W='| wc'
 alias -g S='| sed'
 alias -g A='| awk'
-
 
 if [ x$TERM = xjfbterm ]; then
     alias exit="kill `ps -eH | grep $$ -B1 | grep jfbterm | sed -r "s,^ *([0-9]+).*$,\1,"`"
@@ -122,6 +139,11 @@ if [ -d $HOME/android-sdk-linux_x86 ]; then
 	export PATH="$ANDROID_HOME/platform-tools:$PATH"
 fi
 
+#dartの設定
+if [ -d $HOME/app/dart-sdk ]; then
+	export DART_HOME="$HOME/app/dart-sdk"
+	export PATH="$DART_HOME/bin:$PATH"
+fi
 #gentooフォルダのパス
 declare EPREFIX="$HOME/gentoo"
 
@@ -222,3 +244,4 @@ fi
 
 
 #export PATH="$PATH:$EPREFIX/usr/bin:$EPREFIX/bin:$EPREFIX/tmp/usr/bin:$EPREFIX/tmp/bin:/usr/sfw/bin:/usr/sfw/i386-sun-solaris2.10/bin:/usr/sfw/sparc-sun-solaris2.10/bin:/usr/bin:/bin"
+

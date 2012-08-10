@@ -115,7 +115,7 @@ endif
 " NeoBundle 'FuzzyFinder'
  
  NeoBundle 'Shougo/unite.vim' 
-" NeoBundle 'quickrun.vim'
+ NeoBundle 'quickrun.vim'
  NeoBundle 'h1mesuke/unite-outline'
  NeoBundle 'SingleCompile'
  NeoBundle 'TwitVim'
@@ -169,6 +169,7 @@ endif
  "Makefile_*
  "なども検索対象
  NeoBundle 'qtmplsel.vim'
+ 
 
 
 "d + s + 囲んでるもの
@@ -184,6 +185,14 @@ endif
 "
 "ys + 範囲 + 囲む文字列
  NeoBundle 'surround.vim'
+
+ 
+
+ "Dart snippets
+ NeoBundle 'osyo-manga/neocomplcache-snippets-complete-dart.git'
+ NeoBundle 'vim-scrtips/Dart.git'
+ 
+ 
 
  filetype plugin indent on     " required! 
 
@@ -207,6 +216,10 @@ else
 endif
 
 
+"dart quickrun
+"let g:quickrun_config.dart = {
+"\ "command" : "dart"
+"\ }
 
 "GCC version
 if has('win32') || has('win64')
@@ -657,13 +670,12 @@ else
 "                \'$(FILE_TITLE)$', 
 "                \common_run_command)
 	" gcc の C++0x 版を追加する
-	let common_run_command = '$(FILE_TITLE)$'
-	call SingleCompile#SetCompilerTemplate(
-		\ 'cpp', 'g++ 0x', 
-		\ 'GNU C++ Compiler', 'g++', '-std=gnu++0x -g -o $(FILE_TITLE)$', 
-		\common_run_command)
+"    call SingleCompile#SetCompilerTemplate(
+"        \ 'cpp', 'g++0x original', 
+"        \ 'GNU C++ Compiler', 'g++', '-std=gnu++0x -g -o $(FILE_TITLE)$', 
+"        \common_run_command)
 
-	call SingleCompile#ChooseCompiler('cpp', 'g++ 0x')
+"    call SingleCompile#ChooseCompiler('cpp', 'g++0x original')
 endif
 
 

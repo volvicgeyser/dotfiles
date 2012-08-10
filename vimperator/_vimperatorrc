@@ -58,7 +58,10 @@ let g:plugin_loader_roots += ", ~/Dropbox/vimperator/vimperator"
 
 
 "使いたいplugin
-let g:plugin_loader_plugins = "feedSomeKeys_3, statusline-toolbar, ldrize_cooperation, migemo_find, memo.js, alias.js, nicolist.js, nicontroller.js, youtubeamp.js, appnedAnchor.js, caret-hint.js, auto-reload, auto-source chaika.js" 
+let g:plugin_loader_plugins = "feedSomeKeys_3, statusline-toolbar, ldrize_cooperation, memo.js, alias.js, nicolist.js, nicontroller.js, youtubeamp.js, appnedAnchor.js, caret-hint.js, auto-reload, auto-source chaika.js" 
+
+"pluginの名前
+"migemo_find
 
 "sサーチエンジンの名前とブックマークキーワード
 "fローカルファイル
